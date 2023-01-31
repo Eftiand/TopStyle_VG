@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
 
 export const UserInfoContext = createContext();
 
@@ -18,6 +18,24 @@ export const UserInfoProvider = (props) => {
   const removeCartItem = (item) => {
     setCart(cart.filter((cartItem) => cartItem.id !== item.id));
   };
+
+  useEffect(() => {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.price;
+    });
+    setCartTotal(total);
+  }, [cart]);
+
+  const [products, setProducts] = useState([]);
+
+  const searchProducts = (searchTerm) => {
+    return products.filter((product) => {
+      return product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+  };
+
+
 
   return (
     <UserInfoContext.Provider

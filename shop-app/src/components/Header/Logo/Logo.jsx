@@ -1,6 +1,7 @@
 import logoImage from '../../../assets/img/Logo.png'
 
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 export const Logo = (props) => {
 
@@ -9,9 +10,11 @@ export const Logo = (props) => {
         height: props.height || "5em",
     };
 
-  return (
-    <>
-      <img src={logoImage} alt="Logo" style={styleObj}/>
-    </>
-  );
+return (
+  <>
+    <NavLink to="/">
+      <img src={logoImage} alt="Logo" style={styleObj} />
+    </NavLink>
+  </>
+);
 }

@@ -24,7 +24,9 @@ export const Cart = () => {
   let list = cart.map((product, index) => {
     return (
       <div className="row mt-3" key={index}>
-        <CardCart product={product} />
+        <div className="col-3">
+          <CardCart product={product} />
+        </div>
       </div>
     );
   });

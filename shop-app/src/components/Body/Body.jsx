@@ -4,6 +4,8 @@ import { Error } from "./views/Error";
 import { Login } from "./views/Login";
 import { Cart } from "./views/Cart";
 import { CheckOut } from "./views/CheckOut";
+import { Register } from "./views/Register";
+import { Product } from "./views/Product";
 
 export const Body = () => {
   return (
@@ -13,7 +15,8 @@ export const Body = () => {
         <Route path="/Login" element={<Login />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/CheckOut" element={<CheckOut />} />
-
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Product" element={<Product />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </main>

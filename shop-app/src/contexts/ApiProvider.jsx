@@ -1,5 +1,6 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext } from "react";
 import { addOrder } from "../api/orders";
+import { register } from "../api/auth";
 
 export const ApiContext = createContext();
 
@@ -20,15 +21,15 @@ export const ApiProvider = (props) => {
       TotalPrice: cartTotal,
     };
 
-
-
-    console.log(JSON.stringify(order));
-
     return addOrder(order).then(id => id);
   };
 
+    const addNewUser = (user) => {
+        return register(user).then(id => id);
+    };
+
   return (
-    <ApiContext.Provider value={{ checkOut }}>
+    <ApiContext.Provider value={{ checkOut, addNewUser }}>
       {props.children}
     </ApiContext.Provider>
   );

@@ -11,12 +11,18 @@ export const getOrderById = async (id) => {
 }
 
 export const addOrder = async (order) => {
+    let struct = {
+        "totalPrice": order.TotalPrice,
+        "userId": order.User.id,
+        "products": order.OrderItems.map(product => product.id) 
+    }
+
     return fetch(getUrlOrder(), {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(order)
+        body: JSON.stringify(struct)
     })
     .then(response => response.json());
 }
